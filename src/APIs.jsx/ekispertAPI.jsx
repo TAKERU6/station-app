@@ -1,11 +1,10 @@
 import axios from "axios";
 
-const ekispertAPI = () => {
+const ekispertAPI = (code) => {
   const originalUrl = "https://api.ekispert.jp";
-  const key = "";
-  const from = "";
-  const to = "";
-  const url = `${originalUrl}/v1/json/search/course/light?key=${key}&from=${from}&to=${to}`;
+  const key = process.env.REACT_APP_EKISPERT_KEY;
+  const stationCode = code;
+  const url = `${originalUrl}/v1/json/station?key=${key}&code=${stationCode}`;
   return axios.get(url);
 };
 
