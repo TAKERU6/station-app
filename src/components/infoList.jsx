@@ -4,7 +4,10 @@ import { connect } from "react-redux";
 class InfoList extends Component {
   render() {
     const { infoUrls } = this.props;
-    return <div>{infoUrls}</div>;
+    const result = !!Object.keys(infoUrls).length
+      ? this.props.infoUrls.data.ResultSet.Point.Station
+      : "no data";
+    return <div>{result.Name}</div>;
   }
 }
 
