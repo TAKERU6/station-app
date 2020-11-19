@@ -3,24 +3,24 @@ import { connect } from "react-redux";
 import getUrls from "../actions/getUrls";
 
 class Form extends Component {
-  state = { code: "" };
+  state = { word: "" };
 
-  handleChange = (event) => this.setState({ code: event.target.value });
+  handleChange = (event) => this.setState({ word: event.target.value });
 
   onSubmit = (e) => {
     e.preventDefault();
     const { onSubmit } = this.props;
-    const code = this.state.code;
-    onSubmit(code);
-    this.setState({ code: "" });
+    const word = this.state.word;
+    onSubmit(word);
+    this.setState({ word: "" });
   };
 
   render() {
     return (
       <form onSubmit={(e) => this.onSubmit(e)}>
         <input
-          type="number"
-          value={this.state.code}
+          type="text"
+          value={this.state.word}
           onChange={this.handleChange}
         />
         <input type="submit" value="search" />
@@ -31,7 +31,7 @@ class Form extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: (code) => dispatch(getUrls(code)),
+    onSubmit: (word) => dispatch(getUrls(word)),
   };
 };
 

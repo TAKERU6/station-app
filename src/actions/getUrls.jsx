@@ -8,10 +8,12 @@ const receiveData = (data) => {
   };
 };
 
-const getUrls = (code) => {
+const getUrls = (name) => {
   return (dispatch) => {
-    ekispertAPI(code).then((res) => {
-      dispatch(receiveData(res));
+    ekispertAPI(name).then((res) => {
+      const stations = res.data.ResultSet.Point;
+      const data = stations.map((obj) => obj.Station);
+      dispatch(receiveData(data));
     });
   };
 };
