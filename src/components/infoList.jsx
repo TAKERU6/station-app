@@ -4,13 +4,21 @@ import { connect } from "react-redux";
 class InfoList extends Component {
   render() {
     const { infoUrls } = this.props;
-    const result = !!Object.keys(infoUrls).length
-      ? this.props.infoUrls.data.ResultSet.Point.Station
-      : "no data";
-    return <div>{result.Name}</div>;
+    const resultName = !!infoUrls.length
+      ? this.props.infoUrls.map((item) => (
+          <li key={item.code}>
+            駅名: {item.Name}（{item.Yomi}）交通機関: {item.Type}
+          </li>
+        ))
+      : "駅名を入力して下さい";
+    return <div>{resultName}</div>;
   }
 }
 
 const mapStateToProps = (state) => ({ infoUrls: state.infoUrls });
 
 export default connect(mapStateToProps, null)(InfoList);
+
+//{infoUrls.map((item) => (
+//  <div>{`${item.Name}${item.Yomi}${item.Type}`}</div>
+//  ))}
