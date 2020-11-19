@@ -8,9 +8,9 @@ const receiveData = (data) => {
   };
 };
 
-const getUrls = () => {
+const getUrls = (code) => {
   return (dispatch) => {
-    ekispertAPI().then((res) => {
+    ekispertAPI(code).then((res) => {
       dispatch(receiveData(res));
     });
   };
