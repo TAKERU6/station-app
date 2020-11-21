@@ -10,6 +10,8 @@ class Form extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { onSubmit } = this.props;
+    const isValid = this.state.word === "";
+    if (isValid) return alert("駅名を入力して下さい");
     const word = this.state.word;
     onSubmit(word);
     this.setState({ word: "" });
