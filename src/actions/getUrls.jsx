@@ -1,6 +1,7 @@
 import ekispertAPI from "../APIs/ekispertAPI";
 export const RECEIVEDATA = "RECEIVEDATA";
 export const STARTREQUEST = "STARTREQUEST";
+export const ERROR_MESSAGE = "ERROR_MESSAGE";
 
 const startRequest = () => {
   return { type: STARTREQUEST };
@@ -13,6 +14,10 @@ const receiveData = (data) => {
   };
 };
 
+const errorMessage = () => {
+  return { type: ERROR_MESSAGE };
+};
+
 const getUrls = (name) => {
   return (dispatch) => {
     dispatch(startRequest());
@@ -22,7 +27,7 @@ const getUrls = (name) => {
         const data = stations.map((obj) => obj.Station);
         dispatch(receiveData(data));
       })
-      .catch((e) => console.log(e.message));
+      .catch(() => dispatch(errorMessage()));
   };
 };
 

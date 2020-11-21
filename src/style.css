@@ -41,3 +41,9 @@ h1:before {
 .nameT {
   color: red;
 }
+
+.errorText {
+  color: red;
+  font-weight: 700;
+  font-size: x-large;
+}
