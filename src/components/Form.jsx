@@ -10,12 +10,15 @@ class Form extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { onSubmit } = this.props;
+    const isValid = this.state.word === "";
+    if (isValid) return alert("駅名を入力して下さい");
     const word = this.state.word;
     onSubmit(word);
     this.setState({ word: "" });
   };
 
   render() {
+    const { button } = this.props;
     return (
       <form onSubmit={(e) => this.onSubmit(e)}>
         <input
@@ -23,11 +26,13 @@ class Form extends Component {
           value={this.state.word}
           onChange={this.handleChange}
         />
-        <input type="submit" value="search" />
+        <input type="submit" value={button} />
       </form>
     );
   }
 }
+
+const mapStateToProps = (state) => ({ button: state.button });
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -35,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
