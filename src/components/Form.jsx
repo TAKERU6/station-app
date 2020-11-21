@@ -16,6 +16,7 @@ class Form extends Component {
   };
 
   render() {
+    const { button } = this.props;
     return (
       <form onSubmit={(e) => this.onSubmit(e)}>
         <input
@@ -23,11 +24,13 @@ class Form extends Component {
           value={this.state.word}
           onChange={this.handleChange}
         />
-        <input type="submit" value="search" />
+        <input type="submit" value={button} />
       </form>
     );
   }
 }
+
+const mapStateToProps = (state) => ({ button: state.button });
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -35,4 +38,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

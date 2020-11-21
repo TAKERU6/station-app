@@ -6,8 +6,9 @@ class InfoList extends Component {
     const { infoUrls } = this.props;
     const resultName = !!infoUrls.length
       ? this.props.infoUrls.map((item) => (
-          <li key={item.code}>
-            駅名: {item.Name}（{item.Yomi}）交通機関: {item.Type}
+          <li key={item.code} className="list">
+            <span className="nameS">駅名</span>: {item.Name}（{item.Yomi}）
+            <span className="nameT">交通機関</span>: {item.Type}
           </li>
         ))
       : "駅名を入力して下さい";
