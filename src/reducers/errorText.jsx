@@ -4,7 +4,7 @@ const initialState = "";
 const infoUrls = (state = initialState, action) => {
   switch (action.type) {
     case ERROR_MESSAGE:
-      return "その駅名は見つかりませんでした";
+      return "駅名は見つかりませんでした";
     case RECEIVEDATA:
       return initialState;
     default:

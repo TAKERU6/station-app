@@ -29,8 +29,10 @@ h1:before {
 
 .list {
   color: #1e366a;
-  border-top: solid #1e366a 1px; /*上のボーダー*/
-  border-bottom: solid #1e366a 1px; /*下のボーダー*/
+  border-top: solid #1e366a 1px;
+  /*上のボーダー*/
+  border-bottom: solid #1e366a 1px;
+  /*下のボーダー*/
   padding: 0.5em 0 0.5em 1.5em;
 }
 
